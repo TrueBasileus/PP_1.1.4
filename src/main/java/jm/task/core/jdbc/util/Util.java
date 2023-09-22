@@ -10,8 +10,9 @@ public class Util {
     private static final String PASSWORD = "APFVn4i7";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
 
+    private static Connection connection = null;
+
     public static Connection getConnection() throws SQLException {
-        Connection connection = null;
         try {
             Class.forName(DRIVER);
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -21,7 +22,7 @@ public class Util {
         return connection;
     }
 
-    public static void closeConnection(Connection connection) {
+    public static void closeConnection() {
         try {
             connection.close();
         } catch (SQLException e) {
